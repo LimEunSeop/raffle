@@ -2,17 +2,19 @@
   "name": "raffle",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://limeunseop.github.io/raffle",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.3.1",
+    "gh-pages": "^3.2.3",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
+    "react-scripts": "^3.0.1",
     "styled-components": "^5.3.3",
     "typescript": "^4.5.4",
     "web-vitals": "^2.1.3"
@@ -21,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -42,7 +46,6 @@
     ]
   },
   "devDependencies": {
-    "jest-localstorage-mock": "^2.4.18",
     "@types/classnames": "^2.3.1",
     "@types/jest": "^27.4.0",
     "@types/jquery": "^3.5.13",
@@ -50,7 +53,8 @@
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/react-helmet": "^6.1.5",
-    "@types/styled-components": "^5.1.20"
+    "@types/styled-components": "^5.1.20",
+    "jest-localstorage-mock": "^2.4.18"
   },
   "jest": {
     "resetMocks": false
