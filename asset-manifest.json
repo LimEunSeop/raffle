@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/raffle/static/css/main.ef808038.chunk.css",
+    "main.js": "/raffle/static/js/main.42209bf1.chunk.js",
+    "main.js.map": "/raffle/static/js/main.42209bf1.chunk.js.map",
+    "runtime~main.js": "/raffle/static/js/runtime~main.7e44cbf3.js",
+    "runtime~main.js.map": "/raffle/static/js/runtime~main.7e44cbf3.js.map",
+    "static/js/2.cece13b2.chunk.js": "/raffle/static/js/2.cece13b2.chunk.js",
+    "static/js/2.cece13b2.chunk.js.map": "/raffle/static/js/2.cece13b2.chunk.js.map",
+    "static/js/3.06b3e647.chunk.js": "/raffle/static/js/3.06b3e647.chunk.js",
+    "static/js/3.06b3e647.chunk.js.map": "/raffle/static/js/3.06b3e647.chunk.js.map",
+    "index.html": "/raffle/index.html",
+    "precache-manifest.12d3d89f9def8930f6f83bf64f8c1124.js": "/raffle/precache-manifest.12d3d89f9def8930f6f83bf64f8c1124.js",
+    "service-worker.js": "/raffle/service-worker.js",
+    "static/css/main.ef808038.chunk.css.map": "/raffle/static/css/main.ef808038.chunk.css.map"
+  }
+}
