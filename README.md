@@ -1,5 +1,7 @@
 # 추첨 프로그램
 
+링크: https://limeunseop.github.io/raffle
+
 ## 사용기술
 
 - React, styled-components
