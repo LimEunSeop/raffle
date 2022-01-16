@@ -16,8 +16,19 @@ export const Layout = ({ title, children }: Props) => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <header>
-        {location.pathname !== '/' && <Link to="/">메인으로</Link>}
+      <header
+        style={{
+          textAlign: 'right',
+          padding: '20px',
+          fontSize: '24px',
+          fontWeight: 700,
+        }}
+      >
+        {location.pathname !== '/' && (
+          <Link to="/" style={{ textDecoration: 'none', color: '#000' }}>
+            메인으로
+          </Link>
+        )}
       </header>
 
       <main>{children}</main>
