@@ -20,7 +20,14 @@ function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route
+          path="/"
+          element={
+            <Layout title={programName}>
+              <Main />
+            </Layout>
+          }
+        />
         {menus.map((menu) => (
           <Route
             path={menu.path}

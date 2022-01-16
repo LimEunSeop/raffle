@@ -33,7 +33,26 @@ export const Layout = ({ title, children }: Props) => {
 
       <main>{children}</main>
 
-      <footer></footer>
+      <footer
+        style={{
+          position: 'fixed',
+          bottom: '0',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          padding: '10px 0',
+          color: '#333',
+        }}
+      >
+        Made By 코나아이 공채 12기 임은섭.{' '}
+        <a
+          href="https://github.com/LimEunSeop/raffle"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Click here
+        </a>{' '}
+        to go to Github Repository
+      </footer>
     </>
   )
 }
