@@ -10,14 +10,7 @@ const Main = () => {
       <Helmet>
         <title>추첨 프로그램</title>
       </Helmet>
-      <div
-        style={{
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
+      <div style={{}}>
         <h1 style={{ textAlign: 'center', marginBottom: '100px' }}>
           메뉴를 선택해주세요.
         </h1>
@@ -25,7 +18,8 @@ const Main = () => {
           style={{
             display: 'flex',
             justifyContent: 'space-between',
-            gap: '50px',
+            width: '850px',
+            margin: '0 auto',
           }}
         >
           {menus.map((menu) => (

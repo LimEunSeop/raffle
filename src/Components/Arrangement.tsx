@@ -137,14 +137,19 @@ const Arrangement = () => {
         const raffledIdx = Math.trunc(Math.random() * personElements.length)
 
         const $personElement = $(personElements[raffledIdx])
-        const left = $personElement.parent().data('left')
-        const top = $personElement.parent().data('top')
+        const goLeft = Number($personElement.parent().data('left'))
+        const goTop = Number($personElement.parent().data('top'))
 
+        const currentLeft = window.parseInt($personElement.css('left'))
+        const currentTop = window.parseInt($personElement.css('top'))
+
+        console.log(Math.abs(currentLeft - goLeft))
+        console.log(Math.abs(currentTop - goTop))
         $personElement
           .css({ zIndex: ++zIndex })
           .show(1000)
-          .animate({ left: left + 1 }, Math.random() * 700 + 300)
-          .animate({ top: top + 1 }, Math.random() * 700 + 300)
+          .animate({ left: goLeft + 1 }, Math.abs(currentLeft - goLeft) * 4)
+          .animate({ top: goTop + 1 }, Math.abs(currentTop - goTop) * 4)
 
         completeList.push(personElements.splice(raffledIdx, 1)[0])
       }

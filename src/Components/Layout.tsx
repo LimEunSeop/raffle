@@ -35,12 +35,10 @@ export const Layout = ({ title, children }: Props) => {
 
       <footer
         style={{
-          position: 'fixed',
-          bottom: '0',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          textAlign: 'center',
           padding: '10px 0',
           color: '#333',
+          marginTop: '100px',
         }}
       >
         Made By 코나아이 공채 12기 임은섭.{' '}
