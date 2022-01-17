@@ -84,7 +84,7 @@ const Arrangement = () => {
       seat.dataset.top = String(seat.offsetTop)
 
       $('.seat__person', seat)
-        .animate({
+        .css({
           left: `${seatAreaWidth / 2 - seatWidth / 2}px`,
           top: `${seatAreaHeight / 2 - seatHeight / 2}px`,
         })
@@ -143,11 +143,15 @@ const Arrangement = () => {
         const currentLeft = window.parseInt($personElement.css('left'))
         const currentTop = window.parseInt($personElement.css('top'))
 
-        console.log(Math.abs(currentLeft - goLeft))
-        console.log(Math.abs(currentTop - goTop))
         $personElement
-          .css({ zIndex: ++zIndex })
-          .show(1000)
+          .css({
+            zIndex: ++zIndex,
+            transform: 'scale(500%)',
+            transition: 'transform 1s',
+          })
+          .fadeIn(300)
+          .delay(700)
+          .css({ transform: 'scale(100%)' })
           .animate({ left: goLeft + 1 }, Math.abs(currentLeft - goLeft) * 4)
           .animate({ top: goTop + 1 }, Math.abs(currentTop - goTop) * 4)
 
