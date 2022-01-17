@@ -88,6 +88,7 @@ const Arrangement = () => {
           left: `${seatAreaWidth / 2 - seatWidth / 2}px`,
           top: `${seatAreaHeight / 2 - seatHeight / 2}px`,
         })
+        // .addClass('scale-up')
         .hide()
     })
   }
@@ -146,12 +147,12 @@ const Arrangement = () => {
         $personElement
           .css({
             zIndex: ++zIndex,
-            transform: 'scale(500%)',
+            transform: 'scale(5,5)',
             transition: 'transform 1s',
           })
           .fadeIn(300)
           .delay(700)
-          .css({ transform: 'scale(100%)' })
+          .css({ transform: 'scale(1,1)' })
           .animate({ left: goLeft + 1 }, Math.abs(currentLeft - goLeft) * 4)
           .animate({ top: goTop + 1 }, Math.abs(currentTop - goTop) * 4)
 
@@ -309,6 +310,12 @@ const PersonEl = styled.div`
   margin-top: -1px;
   border-radius: 10px;
   background: #f8f6cc;
+  /* transition: transform 1s; */
+
+  /* &.scale-up {
+    transform: scale(500%);
+    -webkit-transform: scale(500%);
+  } */
 
   .name {
     display: block;
