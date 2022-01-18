@@ -36,6 +36,7 @@ const Arrangement = () => {
   const [column, setColumn] = useState('')
   const [bannedSeatIdx, setBannedSeatIdx] = useState<Number[]>([])
   const [started, setStarted] = useState(false)
+  const [refreshCnt, setRefreshCnt] = useState(0)
 
   const people = useRef<Person[]>([])
   const groups = useRef<Groups>({})
@@ -124,6 +125,7 @@ const Arrangement = () => {
   const handleStartButtonClick = useCallback(
     (e: SyntheticEvent<HTMLButtonElement>) => {
       setStarted(true)
+      setRefreshCnt(refreshCnt + 1)
 
       hideSeatItems()
 
@@ -172,14 +174,14 @@ const Arrangement = () => {
       }
       startAnimation()
     },
-    []
+    [refreshCnt]
   )
 
   const shuffledPeople = useMemo(() => {
     if (people) {
       return getShuffledPeople(Number(row), Number(column), people.current)
     }
-  }, [row, column, bannedSeatIdx])
+  }, [row, column, bannedSeatIdx, refreshCnt])
   let peopleIdx = 0
 
   return (
