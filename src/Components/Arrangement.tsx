@@ -155,8 +155,8 @@ const Arrangement = () => {
           .fadeIn(300)
           .delay(700)
           .css({ transform: 'scale(1,1)' })
-          .animate({ left: goLeft + 1 }, Math.abs(currentLeft - goLeft) * 4)
-          .animate({ top: goTop + 1 }, Math.abs(currentTop - goTop) * 4)
+          .animate({ left: goLeft + 1 }, Math.abs(currentLeft - goLeft) * 3)
+          .animate({ top: goTop + 1 }, Math.abs(currentTop - goTop) * 3)
 
         completeList.push(personElements.splice(raffledIdx, 1)[0])
       }
@@ -170,7 +170,7 @@ const Arrangement = () => {
             window.clearInterval(intervalId.current)
             setStarted(false)
           }
-        }, 3000)
+        }, 1500)
       }
       startAnimation()
     },
@@ -277,12 +277,12 @@ const Seat = styled.button`
   border: 1px solid #000;
   border-radius: 10px;
   vertical-align: top;
-  background: #fff;
+  background: #ffffff55;
   cursor: pointer;
   transition: all 0.3s;
 
   &:hover {
-    background: #dadada;
+    background: #ffffffaa;
   }
 
   &.banned {
@@ -311,7 +311,7 @@ const PersonEl = styled.div`
   margin-left: -1px;
   margin-top: -1px;
   border-radius: 10px;
-  background: #f8f6cc;
+  background: #daf5dddd;
   /* transition: transform 1s; */
 
   /* &.scale-up {
