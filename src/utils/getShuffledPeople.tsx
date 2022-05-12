@@ -14,10 +14,10 @@ export default function getShuffledPeople(people: Person[]) {
 
   // 자리 섞기
   while (originalPeople.length !== 0) {
-    const raffledIdx = Math.trunc(Math.random() * originalPeople.length)
+    const randomIdx = Math.trunc(Math.random() * originalPeople.length)
 
-    if (checkLeftPersonSameGroup(shuffledPeople.length, originalPeople[raffledIdx]) === false) {
-      const personToMove = originalPeople.splice(raffledIdx, 1)[0]
+    if (checkLeftPersonSameGroup(shuffledPeople.length, originalPeople[randomIdx]) === false) {
+      const personToMove = originalPeople.splice(randomIdx, 1)[0]
       personToMove.adjHasSameGroup = false
       shuffledPeople.push(personToMove)
     } else {
@@ -34,7 +34,7 @@ export default function getShuffledPeople(people: Person[]) {
       }
 
       if (notFoundDifferentGroup) {
-        const personToMove = originalPeople.splice(raffledIdx, 1)[0]
+        const personToMove = originalPeople.splice(randomIdx, 1)[0]
         personToMove.adjHasSameGroup = true
         shuffledPeople[shuffledPeople.length - 1].adjHasSameGroup = true
         shuffledPeople.push(personToMove)
