@@ -1,10 +1,6 @@
 import { Person } from '../Components/Arrangement'
 
-export default function getShuffledPeople(
-  row: number,
-  col: number,
-  people: Person[]
-) {
+export default function getShuffledPeople(people: Person[]) {
   const copiedPeople = [...people]
   const shuffledPeople: Person[] = []
 
@@ -20,12 +16,7 @@ export default function getShuffledPeople(
   while (copiedPeople.length !== 0) {
     const raffledIdx = Math.trunc(Math.random() * copiedPeople.length)
 
-    if (
-      checkLeftPersonSameGroup(
-        shuffledPeople.length,
-        copiedPeople[raffledIdx]
-      ) === false
-    ) {
+    if (checkLeftPersonSameGroup(shuffledPeople.length, copiedPeople[raffledIdx]) === false) {
       const personToMove = copiedPeople.splice(raffledIdx, 1)[0]
       personToMove.adjHasSameGroup = false
       shuffledPeople.push(personToMove)
@@ -33,12 +24,7 @@ export default function getShuffledPeople(
       let notFoundDifferentGroup = true
       for (let i = 0; i < 500; i++) {
         const reRaffledIdx = Math.trunc(Math.random() * copiedPeople.length)
-        if (
-          checkLeftPersonSameGroup(
-            shuffledPeople.length,
-            copiedPeople[reRaffledIdx]
-          ) === false
-        ) {
+        if (checkLeftPersonSameGroup(shuffledPeople.length, copiedPeople[reRaffledIdx]) === false) {
           const personToMove = copiedPeople.splice(reRaffledIdx, 1)[0]
           personToMove.adjHasSameGroup = false
           shuffledPeople.push(personToMove)
