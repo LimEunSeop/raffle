@@ -1,7 +1,7 @@
 import { Person } from '../Components/Arrangement'
 
 export default function getShuffledPeople(people: Person[]) {
-  const copiedPeople = [...people]
+  const originalPeople = [...people]
   const shuffledPeople: Person[] = []
 
   const checkLeftPersonSameGroup = (currentIdx: number, person: Person) => {
@@ -13,19 +13,19 @@ export default function getShuffledPeople(people: Person[]) {
   }
 
   // 자리 섞기
-  while (copiedPeople.length !== 0) {
-    const raffledIdx = Math.trunc(Math.random() * copiedPeople.length)
+  while (originalPeople.length !== 0) {
+    const raffledIdx = Math.trunc(Math.random() * originalPeople.length)
 
-    if (checkLeftPersonSameGroup(shuffledPeople.length, copiedPeople[raffledIdx]) === false) {
-      const personToMove = copiedPeople.splice(raffledIdx, 1)[0]
+    if (checkLeftPersonSameGroup(shuffledPeople.length, originalPeople[raffledIdx]) === false) {
+      const personToMove = originalPeople.splice(raffledIdx, 1)[0]
       personToMove.adjHasSameGroup = false
       shuffledPeople.push(personToMove)
     } else {
       let notFoundDifferentGroup = true
       for (let i = 0; i < 500; i++) {
-        const reRaffledIdx = Math.trunc(Math.random() * copiedPeople.length)
-        if (checkLeftPersonSameGroup(shuffledPeople.length, copiedPeople[reRaffledIdx]) === false) {
-          const personToMove = copiedPeople.splice(reRaffledIdx, 1)[0]
+        const reRaffledIdx = Math.trunc(Math.random() * originalPeople.length)
+        if (checkLeftPersonSameGroup(shuffledPeople.length, originalPeople[reRaffledIdx]) === false) {
+          const personToMove = originalPeople.splice(reRaffledIdx, 1)[0]
           personToMove.adjHasSameGroup = false
           shuffledPeople.push(personToMove)
           notFoundDifferentGroup = false
@@ -34,7 +34,7 @@ export default function getShuffledPeople(people: Person[]) {
       }
 
       if (notFoundDifferentGroup) {
-        const personToMove = copiedPeople.splice(raffledIdx, 1)[0]
+        const personToMove = originalPeople.splice(raffledIdx, 1)[0]
         personToMove.adjHasSameGroup = true
         shuffledPeople[shuffledPeople.length - 1].adjHasSameGroup = true
         shuffledPeople.push(personToMove)
