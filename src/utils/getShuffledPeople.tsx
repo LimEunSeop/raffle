@@ -1,6 +1,12 @@
 import { Person } from '../Components/Arrangement'
 
-export default function getShuffledPeople(people: Person[]) {
+/**
+ * 같은 그룹인 사람이 옆자리에 섞이지 않도록 배열을 섞는다.
+ *
+ * @param {Person[]} people 섞을 사람 리스트
+ * @returns {Person[]} 섞인 사람 리스트
+ */
+export default function getShuffledPeople(people: Person[]): Person[] {
   const originalPeople = [...people]
   const shuffledPeople: Person[] = []
 
