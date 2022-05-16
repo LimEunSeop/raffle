@@ -10,19 +10,20 @@ export default function getShuffledPeople(people: Person[]): Person[] {
   const originalPeople = [...people]
   const shuffledPeople: Person[] = []
 
-  const checkLeftPersonSameGroup = (currentIdx: number, person: Person) => {
-    if (currentIdx === 0) {
+  const isGroupRepeated = (person: Person) => {
+    if (shuffledPeople.length === 0) {
       return false
-    } else {
-      return person.group === shuffledPeople[currentIdx - 1].group
     }
+
+    // 새로 들어올 놈과 기존 마지막 놈을 비교
+    return person.group === shuffledPeople.slice(-1)[0].group
   }
 
   // 자리 섞기
   while (originalPeople.length !== 0) {
     const randomIdx = Math.trunc(Math.random() * originalPeople.length)
 
-    if (checkLeftPersonSameGroup(shuffledPeople.length, originalPeople[randomIdx]) === false) {
+    if (isGroupRepeated(originalPeople[randomIdx]) === false) {
       const personToMove = originalPeople.splice(randomIdx, 1)[0]
       personToMove.adjHasSameGroup = false
       shuffledPeople.push(personToMove)
@@ -30,7 +31,7 @@ export default function getShuffledPeople(people: Person[]): Person[] {
       let notFoundDifferentGroup = true
       for (let i = 0; i < 500; i++) {
         const reRaffledIdx = Math.trunc(Math.random() * originalPeople.length)
-        if (checkLeftPersonSameGroup(shuffledPeople.length, originalPeople[reRaffledIdx]) === false) {
+        if (isGroupRepeated(originalPeople[reRaffledIdx]) === false) {
           const personToMove = originalPeople.splice(reRaffledIdx, 1)[0]
           personToMove.adjHasSameGroup = false
           shuffledPeople.push(personToMove)
@@ -42,7 +43,7 @@ export default function getShuffledPeople(people: Person[]): Person[] {
       if (notFoundDifferentGroup) {
         const personToMove = originalPeople.splice(randomIdx, 1)[0]
         personToMove.adjHasSameGroup = true
-        shuffledPeople[shuffledPeople.length - 1].adjHasSameGroup = true
+        shuffledPeople.slice(-1)[0].adjHasSameGroup = true
         shuffledPeople.push(personToMove)
       }
     }
