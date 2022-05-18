@@ -16,7 +16,7 @@ interface RaffleData {
 export interface Person {
   name: string
   group: string
-  adjHasSameGroup: boolean
+  adjHasSameGroup?: boolean
 }
 
 export interface Groups {
