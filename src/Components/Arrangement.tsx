@@ -1,12 +1,4 @@
-import React, {
-  ChangeEvent,
-  useRef,
-  useCallback,
-  useEffect,
-  useState,
-  SyntheticEvent,
-  useMemo,
-} from 'react'
+import React, { ChangeEvent, useRef, useCallback, useEffect, useState, SyntheticEvent, useMemo } from 'react'
 import styled from 'styled-components'
 import getShuffledPeople from '../utils/getShuffledPeople'
 import classnames from 'classnames'
@@ -24,7 +16,7 @@ interface RaffleData {
 export interface Person {
   name: string
   group: string
-  adjHasSameGroup?: boolean
+  adjHasSameGroup: boolean
 }
 
 export interface Groups {
@@ -45,12 +37,8 @@ const Arrangement = () => {
   const intervalId = useRef<number>()
 
   useEffect(() => {
-    const arrangementData: ArrangementData = JSON.parse(
-      localStorage.getItem('arrangementData')!
-    )
-    const raffleData: RaffleData = JSON.parse(
-      localStorage.getItem('raffleData')!
-    )
+    const arrangementData: ArrangementData = JSON.parse(localStorage.getItem('arrangementData')!)
+    const raffleData: RaffleData = JSON.parse(localStorage.getItem('raffleData')!)
 
     if (arrangementData) {
       const { row, column } = arrangementData
@@ -78,8 +66,7 @@ const Arrangement = () => {
     const seatAreaWidth = $seatArea.width() || 0
     const seatAreaHeight = $seatArea.height() || 0
 
-    const seatItems =
-      document.querySelectorAll<HTMLButtonElement>('.seat__item')
+    const seatItems = document.querySelectorAll<HTMLButtonElement>('.seat__item')
     seatItems.forEach((seat) => {
       seat.dataset.left = String(seat.offsetLeft)
       seat.dataset.top = String(seat.offsetTop)
@@ -129,9 +116,7 @@ const Arrangement = () => {
 
       hideSeatItems()
 
-      const personElements = Array.from(
-        document.querySelectorAll<HTMLDivElement>('.seat__person')
-      )
+      const personElements = Array.from(document.querySelectorAll<HTMLDivElement>('.seat__person'))
 
       const completeList: HTMLDivElement[] = []
 
@@ -189,30 +174,14 @@ const Arrangement = () => {
       <h1>자리 추첨기</h1>
       <form style={{ marginBottom: 15 }}>
         <span style={{ marginRight: 15 }}>
-          <StyledInput
-            type="text"
-            id="row"
-            name="row"
-            value={row}
-            onChange={handleInputChange}
-          />
+          <StyledInput type="text" id="row" name="row" value={row} onChange={handleInputChange} />
           <label htmlFor="row">행</label>
         </span>
         <span>
-          <StyledInput
-            type="text"
-            id="column"
-            name="column"
-            value={column}
-            onChange={handleInputChange}
-          />
+          <StyledInput type="text" id="column" name="column" value={column} onChange={handleInputChange} />
           <label htmlFor="column">열</label>
         </span>
-        <StyledButton
-          type="button"
-          onClick={handleStartButtonClick}
-          disabled={started}
-        >
+        <StyledButton type="button" onClick={handleStartButtonClick} disabled={started}>
           Start!
         </StyledButton>
       </form>
@@ -228,24 +197,15 @@ const Arrangement = () => {
                   data-idx={idx}
                   data-testid={`seat-${idx}`}
                   onClick={handleSeatClick}
-                  className={classnames(
-                    'seat__item',
-                    bannedSeatIdx.indexOf(idx) !== -1 ? 'banned' : false
-                  )}
+                  className={classnames('seat__item', bannedSeatIdx.indexOf(idx) !== -1 ? 'banned' : false)}
                   disabled={started}
                 >
-                  {shuffledPeople &&
-                    peopleIdx < shuffledPeople.length &&
-                    bannedSeatIdx.indexOf(idx) === -1 && (
-                      <PersonEl className="seat__person">
-                        <span className="name">
-                          {shuffledPeople[peopleIdx]?.name}
-                        </span>
-                        <span className="group">
-                          {groups.current[shuffledPeople[peopleIdx++]?.group]}
-                        </span>
-                      </PersonEl>
-                    )}
+                  {shuffledPeople && peopleIdx < shuffledPeople.length && bannedSeatIdx.indexOf(idx) === -1 && (
+                    <PersonEl className="seat__person">
+                      <span className="name">{shuffledPeople[peopleIdx]?.name}</span>
+                      <span className="group">{groups.current[shuffledPeople[peopleIdx++]?.group]}</span>
+                    </PersonEl>
+                  )}
                 </Seat>
               )
             })}
