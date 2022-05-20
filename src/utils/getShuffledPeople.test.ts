@@ -27,6 +27,7 @@ describe('getShuffledPeople', () => {
         shuffledPeople = getShuffledPeople(people)
       } else {
         isFirstItemNotSame = true
+        break
       }
     }
 
@@ -38,13 +39,12 @@ describe('getShuffledPeople', () => {
   })
 
   it('makes adjHasSameGroup prop of items false and it of remainer true', () => {
-    let hasConsecutiveBoolean = false
+    let hasConsecutiveBoolean = true
 
     for (let i = 0; i < shuffledPeople.length - 1; i++) {
-      if (shuffledPeople[0].adjHasSameGroup! <= shuffledPeople[1].adjHasSameGroup!) {
-        hasConsecutiveBoolean = true
-      } else {
+      if (shuffledPeople[0].adjHasSameGroup! > shuffledPeople[1].adjHasSameGroup!) {
         hasConsecutiveBoolean = false
+        break
       }
     }
 
